@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="/static/style/profile_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Профиль пользователя</h1>
+        <div class="user-info">
+            <p><strong>Имя пользователя:</strong> Иван</p>
+            <p><strong>Email:</strong> ivan@example.com</p>
+        </div>
+
+        <h2>Заметки</h2>
+        <div class="notes">
+            <div class="note">
+                <h3>Заголовок первой заметки</h3>
+                <p>Текст первой заметки.</p>
+                <div class="note-actions">
+                    <button class="edit-btn" onclick="editNote(this)">Изменить</button>
+                    <button class="delete-btn" onclick="deleteNote(this)">Удалить</button>
+                </div>
+            </div>
+            <div class="note">
+                <h3>Заголовок второй заметки</h3>
+                <p>Текст второй заметки.</p>
+                <div class="note-actions">
+                    <button class="edit-btn" onclick="editNote(this)">Изменить</button>
+                    <button class="delete-btn" onclick="deleteNote(this)">Удалить</button>
+                </div>
+            </div>
+        </div>
+        <form id="addNoteForm">
+            <h3>Добавить новую заметку</h3>
+            <input type="text" id="newNoteTitle" placeholder="Заголовок" required>
+            <textarea id="newNoteContent" placeholder="Текст заметки..." required></textarea>
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('addNoteForm').onsubmit = function(event) {
+            event.preventDefault();
+            const title = document.getElementById('newNoteTitle').value;
+            const content = document.getElementById('newNoteContent').value;
+            addNote(title, content);
+            document.getElementById('newNoteTitle').value = '';
+            document.getElementById('newNoteContent').value = '';
+        };
+
+        function addNote(title, content) {
+            const notesDiv = document.querySelector('.notes');
+            const newNoteDiv = document.createElement('div');
+            newNoteDiv.className = 'note';
+            newNoteDiv.innerHTML = `
+                <h3>${title}</h3>
+                <p>${content}</p>
+                <div class="note-actions">
+                    <button class="edit-btn" onclick="editNote(this)">Изменить</button>
+                    <button class="delete-btn" onclick="deleteNote(this)">Удалить</button>
+                </div>
+            `;
+            notesDiv.appendChild(newNoteDiv);
+        }
+
+        function editNote(button) {
+            const noteDiv = button.parentNode.parentNode;
+            const title = noteDiv.querySelector('h3');
+            const content = noteDiv.querySelector('p');
+            const newTitle = prompt("Редактируйте заголовок:", title.textContent);
+            const newContent = prompt("Редактируйте заметку:", content.textContent);
+            if (newTitle) {
+                title.textContent = newTitle;
+            }
+            if (newContent) {
+                content.textContent = newContent;
+            }
+        }
+
+        function deleteNote(button) {
+            const noteDiv = button.parentNode.parentNode;
+            noteDiv.remove();
+        }
+    </script>
+</body>
+</html>

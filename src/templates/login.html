@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма Логина</title>
+    <link rel="stylesheet" href="/static/style/base_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Вход в систему</h1>
+        <form>
+            <div class="input-group">
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" id="login-button" class="submit-button" onclick="loginFunction(event)">Войти</button>
+            <p class="message">Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+        </form>
+    </div>
+<!-- Подключаем внешний JavaScript-файл -->
+<script src="/static/js/script.js"></script>
+
+</body>
+</html>
+

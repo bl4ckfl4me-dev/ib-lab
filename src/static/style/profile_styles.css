@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+h1, h2, h3 {
+    color: #4CAF50;
+}
+
+.user-info {
+    margin-bottom: 20px;
+}
+
+.notes {
+    margin-bottom: 20px;
+}
+
+.note {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.note-actions {
+    display: flex;
+    justify-content: flex-end; /* Выравнивание кнопок вправо */
+    margin-top: 10px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.edit-btn {
+    background-color: #f2a900; /* Мягкий оранжевый */
+    color: white; /* Белый текст для контраста */
+}
+
+.delete-btn {
+    background-color: #f0848d; /* Мягкий розовый */
+    color: white; /* Белый текст для контраста */
+}
+
+textarea {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
