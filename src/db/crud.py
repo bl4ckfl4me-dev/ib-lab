@@ -13,8 +13,14 @@ def get_user_by_email(email: str) -> tuple | None:
     return user
 
 
-def get_user_with_auth(email: str, password: str) -> tuple | None:
-    user = get_user_by_email(email)
+def get_user_by_nickname(nickname: str) -> tuple | None:
+    cur.execute(f"SELECT id, name, email, pwd  FROM users WHERE name = '{nickname}'")
+    user = cur.fetchone()
+    return user
+
+
+def get_user_with_auth(username: str, password: str) -> tuple | None:
+    user = get_user_by_nickname(username)
 
     if user is None:
         raise UserNotPresented
@@ -40,8 +46,8 @@ def get_notes_by_user_email(email: str) -> list | None:
     return notes
 
 
-def add_new_notes(header: str, content: str):
-    cur.execute(f'INSERT INTO notes VALUES ({header}, {content})')
+def add_new_notes(header: str, content: str, user_id: int):
+    cur.execute(f'INSERT INTO notes (header, content, user_id) VALUES ({header}, {content}, {user_id})')
     con.commit()
 
 
@@ -51,5 +57,5 @@ def add_new_user(email: str, username: str, password: str):
     if user is not None:
         raise UserWithThisEmailAlreadyPresented
 
-    cur.execute(f"""INSERT INTO users VALUES ('{username}', '{email}', '{password}')""")
+    cur.execute(f"""INSERT INTO users (name, email, pwd) VALUES ('{username}', '{email}', '{password}')""")
     con.commit()

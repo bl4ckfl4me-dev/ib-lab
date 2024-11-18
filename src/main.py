@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv('./.env')
+
 from routes.frontend import router as frontend_router
 from routes.backend import router as backend_router
 from fastapi.staticfiles import StaticFiles

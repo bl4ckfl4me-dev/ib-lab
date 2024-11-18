@@ -2,6 +2,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi import APIRouter, Request
 from cript import decode_access_token
+from db.crud import get_user_by_nickname
 
 
 router = APIRouter()
@@ -20,6 +21,10 @@ async def get_register_page(request: Request):
 
 @router.get('/profile')
 async def get_user_profile_page(request: Request):
-    user = decode_access_token(request.cookies.get('user_access_token'))
-    # profile = get_user_with_auth(user['email'], user['password'])
-    return templates.TemplateResponse(name='profile.html', context={'request': request})
+    user = decode_access_token(request.cookies.get('users_access_token'))
+    profile = get_user_by_nickname(user['name'])
+    return templates.TemplateResponse(request=request, name='profile.html', context={
+        'id': profile[0],
+        'name': profile[1],
+        'email': profile[2],
+    })

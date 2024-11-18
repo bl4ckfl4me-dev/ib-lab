@@ -73,7 +73,8 @@ async function loginFunction(event) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            credentials: 'include'
         });
 
         // Проверяем успешность ответа
@@ -87,7 +88,7 @@ async function loginFunction(event) {
         const result = await response.json();
 
         if (result.message) {  // Проверяем наличие сообщения о успешной регистрации
-            window.location.href = '/pages/profile';  // Перенаправляем пользователя на страницу логина
+            window.location.href = '/profile';  // Перенаправляем пользователя на страницу логина
         } else {
             alert(result.message || 'Неизвестная ошибка');
         }

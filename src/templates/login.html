@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Вход в систему</h1>
-        <form>
+        <form id="login-form">
             <div class="input-group">
                 <label for="username">Имя пользователя</label>
                 <input type="text" id="username" name="username" required>
@@ -19,7 +19,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" id="login-button" class="submit-button" onclick="loginFunction(event)">Войти</button>
-            <p class="message">Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+            <p class="message">Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
         </form>
     </div>
 <!-- Подключаем внешний JavaScript-файл -->

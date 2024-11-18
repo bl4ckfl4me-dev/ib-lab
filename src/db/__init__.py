@@ -5,7 +5,7 @@ cur = con.cursor()
 
 cur.execute('''
 CREATE TABLE IF NOT EXISTS users (
-  id integer PRIMARY KEY,
+  id integer PRIMARY KEY AUTOINCREMENT,
   name TEXT,
   email TEXT UNIQUE,
   pwd TEXT
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 cur.execute('''
 CREATE TABLE IF NOT EXISTS notes (
-  id integer PRIMARY KEY,
+  id integer PRIMARY KEY AUTOINCREMENT,
   header TEXT,
   content TEXT,
   user_id integer,
